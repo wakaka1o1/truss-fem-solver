@@ -3,7 +3,11 @@
 
 namespace truss_fem {
 
-// Placeholder for Node type
+struct Node {
+    int id;
+    double x, y;
+    double ux{0.0}, uy{0.0};
+};
 
 } // namespace truss_fem
 
