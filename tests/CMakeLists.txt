@@ -12,6 +12,7 @@ target_link_libraries(test_gaussian_solver PRIVATE truss_fem_lib gtest_main)
 
 add_executable(test_json_parser test_json_parser.cpp)
 target_link_libraries(test_json_parser PRIVATE truss_fem_lib gtest_main)
+target_compile_definitions(test_json_parser PRIVATE TEST_FIXTURES_DIR="${CMAKE_SOURCE_DIR}/tests/fixtures")
 
 add_executable(test_integration test_integration.cpp)
 target_link_libraries(test_integration PRIVATE truss_fem_lib gtest_main)
