@@ -1,9 +1,15 @@
-#ifndef TRUSS_FEM_BC_H
-#define TRUSS_FEM_BC_H
+#ifndef TRUSS_FEM_BOUNDARY_CONDITION_H
+#define TRUSS_FEM_BOUNDARY_CONDITION_H
+
+#include "Types.h"
 
 namespace truss_fem {
 
-// Placeholder for BoundaryCondition type
+struct BoundaryCondition {
+    int nodeId;
+    DoF dof;
+    double value;
+};
 
 } // namespace truss_fem
 
