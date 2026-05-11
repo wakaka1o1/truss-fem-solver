@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <cassert>
-#include <iostream>
 
 namespace truss_fem {
 
@@ -11,7 +10,9 @@ using Vector = std::vector<double>;
 
 class Matrix {
 public:
-    explicit Matrix(int n) : data_(n * n, 0.0), n_(n) {}
+    explicit Matrix(int n) : data_(n * n, 0.0), n_(n) {
+        assert(n > 0);
+    }
 
     double& operator()(int i, int j) {
         assert(i >= 0 && i < n_ && j >= 0 && j < n_);
