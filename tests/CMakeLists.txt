@@ -1,0 +1,27 @@
+enable_testing()
+
+add_executable(test_element test_element.cpp)
+target_link_libraries(test_element PRIVATE truss_fem_lib gtest_main)
+
+add_executable(test_assembler test_assembler.cpp)
+target_link_libraries(test_assembler PRIVATE truss_fem_lib gtest_main)
+
+add_executable(test_bc_handler test_bc_handler.cpp)
+target_link_libraries(test_bc_handler PRIVATE truss_fem_lib gtest_main)
+
+add_executable(test_gaussian_solver test_gaussian_solver.cpp)
+target_link_libraries(test_gaussian_solver PRIVATE truss_fem_lib gtest_main)
+
+add_executable(test_json_parser test_json_parser.cpp)
+target_link_libraries(test_json_parser PRIVATE truss_fem_lib gtest_main)
+
+add_executable(test_integration test_integration.cpp)
+target_link_libraries(test_integration PRIVATE truss_fem_lib gtest_main)
+
+include(GoogleTest)
+gtest_discover_tests(test_element)
+gtest_discover_tests(test_assembler)
+gtest_discover_tests(test_bc_handler)
+gtest_discover_tests(test_gaussian_solver)
+gtest_discover_tests(test_json_parser)
+gtest_discover_tests(test_integration)
