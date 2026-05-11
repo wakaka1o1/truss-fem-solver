@@ -15,7 +15,7 @@ TEST(JsonParserTest, ParseValidTwoBarTruss) {
 
     EXPECT_EQ(model.nodes.size(), static_cast<size_t>(3));
     EXPECT_EQ(model.elements.size(), static_cast<size_t>(2));
-    EXPECT_EQ(model.bcs.size(), static_cast<size_t>(3));
+    EXPECT_EQ(model.bcs.size(), static_cast<size_t>(4));
     EXPECT_EQ(model.loads.size(), static_cast<size_t>(1));
 
     EXPECT_EQ(model.nodes[0].id, 0);
@@ -45,6 +45,6 @@ TEST(JsonParserTest, ParseThreeBarTruss) {
 
     EXPECT_EQ(model.nodes.size(), static_cast<size_t>(4));
     EXPECT_EQ(model.elements.size(), static_cast<size_t>(3));
-    EXPECT_EQ(model.bcs.size(), static_cast<size_t>(4));
+    EXPECT_EQ(model.bcs.size(), static_cast<size_t>(6));
     EXPECT_EQ(model.loads.size(), static_cast<size_t>(1));
 }
