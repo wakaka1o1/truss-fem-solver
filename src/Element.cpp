@@ -26,7 +26,7 @@ Matrix Element::computeLocalStiffness(const Node& node1, const Node& node2) cons
 Matrix Element::computeGlobalStiffness(const Node& node1, const Node& node2) const {
     double dx = node2.x - node1.x;
     double dy = node2.y - node1.y;
-    double L = std::sqrt(dx * dx + dy * dy);
+    double L = computeLength(node1, node2);
 
     if (L < 1e-15) {
         throw std::runtime_error("Element " + std::to_string(id) + " has zero length");
@@ -46,9 +46,10 @@ Matrix Element::computeGlobalStiffness(const Node& node1, const Node& node2) con
 }
 
 double Element::computeStrain(const Node& node1, const Node& node2) const {
-    double dx = node2.x - node1.x;
-    double dy = node2.y - node1.y;
-    double L0 = std::sqrt(dx * dx + dy * dy);
+    double L0 = computeLength(node1, node2);
+    if (L0 < 1e-15) {
+        throw std::runtime_error("Element " + std::to_string(id) + " has zero length");
+    }
 
     double dx_new = (node2.x + node2.ux) - (node1.x + node1.ux);
     double dy_new = (node2.y + node2.uy) - (node1.y + node1.uy);

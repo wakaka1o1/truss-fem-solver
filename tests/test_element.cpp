@@ -5,7 +5,6 @@
 
 using namespace truss_fem;
 
-constexpr double PI = 3.141592653589793;
 constexpr double EPS = 1e-9;
 
 TEST(ElementTest, LocalStiffnessHorizontalBar) {
@@ -77,4 +76,23 @@ TEST(ElementTest, StressComputation) {
     // stress = E * strain; compare against computed strain to avoid floating-point
     // amplification (~1e-16 strain error * 2.1e11 = ~2e-5 stress error)
     EXPECT_NEAR(stress, e.E * strain, EPS);
+}
+
+TEST(ElementTest, ThrowsOnZeroLength) {
+    Node n0{0, 0.0, 0.0};
+    Node n1{1, 0.0, 0.0}; // coincident -> L=0
+    Element e{0, 0, 1, 210e9, 0.001};
+
+    EXPECT_THROW(e.computeLocalStiffness(n0, n1), std::runtime_error);
+    EXPECT_THROW(e.computeGlobalStiffness(n0, n1), std::runtime_error);
+    EXPECT_THROW(e.computeStrain(n0, n1), std::runtime_error);
+}
+
+TEST(ElementTest, ZeroStrainForNoDisplacement) {
+    Node n0{0, 0.0, 0.0, 0.0, 0.0};
+    Node n1{1, 1.0, 0.0, 0.0, 0.0};
+    Element e{0, 0, 1, 210e9, 0.001};
+
+    double strain = e.computeStrain(n0, n1);
+    EXPECT_NEAR(strain, 0.0, EPS);
 }

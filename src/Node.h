@@ -5,7 +5,7 @@ namespace truss_fem {
 
 struct Node {
     int id;
-    double x, y;
+    double x{0.0}, y{0.0};
     double ux{0.0}, uy{0.0};
 };
 
