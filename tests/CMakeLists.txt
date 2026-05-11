@@ -16,6 +16,7 @@ target_compile_definitions(test_json_parser PRIVATE TEST_FIXTURES_DIR="${CMAKE_S
 
 add_executable(test_integration test_integration.cpp)
 target_link_libraries(test_integration PRIVATE truss_fem_lib gtest_main)
+target_compile_definitions(test_integration PRIVATE TEST_FIXTURES_DIR="${CMAKE_SOURCE_DIR}/tests/fixtures")
 
 include(GoogleTest)
 gtest_discover_tests(test_element)
