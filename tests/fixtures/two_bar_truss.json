@@ -11,6 +11,7 @@
   "boundary_conditions": [
     { "node": 0, "dof": "ux", "value": 0.0 },
     { "node": 0, "dof": "uy", "value": 0.0 },
+    { "node": 1, "dof": "ux", "value": 0.0 },
     { "node": 1, "dof": "uy", "value": 0.0 }
   ],
   "loads": [
