@@ -1,5 +1,3 @@
-enable_testing()
-
 add_executable(test_element test_element.cpp)
 target_link_libraries(test_element PRIVATE truss_fem_lib gtest_main)
 
